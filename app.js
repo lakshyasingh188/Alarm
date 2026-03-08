@@ -1,6 +1,6 @@
-const SUPABASE_URL="https://sozdibpjfbjypzndoeyz.supabase.co"
+const SUPABASE_URL = "https://sozdibpjfbjypzndoeyz.supabase.co"
 
-const SUPABASE_KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNvemRpYnBqZmJqeXB6bmRvZXl6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI5NDY5NjcsImV4cCI6MjA4ODUyMjk2N30.Vy9cFXM99ZiyB0OuhIEfeiSr6ab1boePlDSFXJKTbM4"
+const SUPABASE_KEY = "YOUR_ANON_KEY"
 
 const supabase = window.supabase.createClient(
 SUPABASE_URL,
@@ -52,26 +52,6 @@ alert(error.message)
 }else{
 
 window.location="dashboard.html"
-
-}
-
-}
-
-async function logout(){
-
-await supabase.auth.signOut()
-
-window.location="index.html"
-
-}
-
-async function checkUser(){
-
-const {data}=await supabase.auth.getUser()
-
-if(!data.user){
-
-window.location="index.html"
 
 }
 

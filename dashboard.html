@@ -2,7 +2,7 @@
 <html>
 <head>
 
-<title>Dashboard</title>
+<title>Schedule Alarm Call</title>
 
 <link rel="stylesheet" href="style.css">
 <script src="app.js" defer></script>
@@ -19,9 +19,19 @@
 
 <input id="description" placeholder="Description">
 
-<button onclick="createCall()">Schedule Call</button>
+<button onclick="scheduleCall()">Schedule Call</button>
 
 </div>
+
+<script>
+
+if(!localStorage.getItem("phone")){
+
+window.location.href="index.html"
+
+}
+
+</script>
 
 </body>
 </html>

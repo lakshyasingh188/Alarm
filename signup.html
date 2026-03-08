@@ -1,66 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Create Account</title>
 
-<style>
-
-body{
-font-family:Arial;
-background:#f2f2f2;
-display:flex;
-justify-content:center;
-align-items:center;
-height:100vh;
-}
-
-.container{
-
-background:white;
-padding:30px;
-width:320px;
-border-radius:10px;
-box-shadow:0 0 10px rgba(0,0,0,0.1);
-text-align:center;
-
-}
-
-input{
-
-width:90%;
-padding:10px;
-margin:10px;
-border:1px solid #ccc;
-border-radius:5px;
-
-}
-
-button{
-
-padding:10px 20px;
-background:#4CAF50;
-color:white;
-border:none;
-border-radius:5px;
-cursor:pointer;
-
-}
-
-button:hover{
-
-background:#45a049;
-
-}
-
-</style>
+<link rel="stylesheet" href="style.css">
 
 </head>
-
 
 <body>
 
@@ -80,50 +26,9 @@ background:#45a049;
 
 </div>
 
-
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-<script>
-
-const SUPABASE_URL = "https://sozdibpjfbjypzndoeyz.supabase.co"
-
-const SUPABASE_KEY = "PASTE_YOUR_ANON_KEY_HERE"
-
-const supabase = window.supabase.createClient(
-SUPABASE_URL,
-SUPABASE_KEY
-)
-
-
-async function signup(){
-
-const email = document.getElementById("email").value
-const password = document.getElementById("password").value
-
-const { data, error } = await supabase.auth.signUp({
-
-email: email,
-password: password
-
-})
-
-if(error){
-
-alert(error.message)
-
-}else{
-
-alert("Account Created Successfully")
-
-window.location="index.html"
-
-}
-
-}
-
-</script>
-
+<script src="app.js"></script>
 
 </body>
-
 </html>

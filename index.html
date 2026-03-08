@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-
-<title>Login - Alarm Call</title>
+<title>Login</title>
 
 <link rel="stylesheet" href="style.css">
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
-<script src="app.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="app.js"></script>
 
 </head>
 
@@ -15,17 +14,17 @@
 
 <div class="container">
 
-<h2>Login with Phone</h2>
+<h2>Login</h2>
 
-<input id="phone" placeholder="+91XXXXXXXXXX">
+<input id="email" placeholder="Email">
 
-<button onclick="sendOTP()">Send OTP</button>
+<input id="password" type="password" placeholder="Password">
 
-<br><br>
+<button onclick="login()">Login</button>
 
-<input id="otp" placeholder="Enter OTP">
+<p>Don't have account?</p>
 
-<button onclick="verifyOTP()">Verify</button>
+<a href="signup.html">Create Account</a>
 
 </div>
 

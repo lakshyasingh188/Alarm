@@ -2,10 +2,12 @@
 <html>
 <head>
 
-<title>Schedule Alarm Call</title>
+<title>Dashboard</title>
 
 <link rel="stylesheet" href="style.css">
-<script src="app.js" defer></script>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="app.js"></script>
 
 </head>
 
@@ -13,21 +15,17 @@
 
 <div class="container">
 
-<h2>Schedule Alarm Call</h2>
+<h2>User Dashboard</h2>
 
-<input id="time" type="time">
+<p>You are logged in</p>
 
-<input id="description" placeholder="Description">
-
-<button onclick="scheduleCall()">Schedule Call</button>
+<button onclick="logout()">Logout</button>
 
 </div>
 
 <script>
 
-if(!localStorage.getItem("phone")){
-window.location.href="index.html"
-}
+checkUser()
 
 </script>
 

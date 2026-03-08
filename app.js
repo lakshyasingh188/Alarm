@@ -1,10 +1,12 @@
 const SUPABASE_URL="https://sozdibpjfbjypzndoeyz.supabase.co"
 
-const SUPABASE_KEY="YOUR_SUPABASE_ANON_KEY"
+const SUPABASE_KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNvemRpYnBqZmJqeXB6bmRvZXl6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI5NDY5NjcsImV4cCI6MjA4ODUyMjk2N30.Vy9cFXM99ZiyB0OuhIEfeiSr6ab1boePlDSFXJKTbM4"
 
 const { createClient } = supabase
 
 const client=createClient(SUPABASE_URL,SUPABASE_KEY)
+
+
 
 async function sendOTP(){
 
@@ -28,6 +30,8 @@ alert("OTP Sent")
 
 }
 
+
+
 async function verifyOTP(){
 
 const phone=document.getElementById("phone").value
@@ -36,9 +40,7 @@ const otp=document.getElementById("otp").value
 const {error}=await client.auth.verifyOtp({
 
 phone:phone,
-
 token:otp,
-
 type:"sms"
 
 })
@@ -53,13 +55,15 @@ alert("Login Success")
 
 localStorage.setItem("phone",phone)
 
-window.location="dashboard.html"
+window.location.href="dashboard.html"
 
 }
 
 }
 
-async function createCall(){
+
+
+async function scheduleCall(){
 
 const phone=localStorage.getItem("phone")
 
@@ -80,9 +84,7 @@ headers:{
 body:JSON.stringify({
 
 phone:phone,
-
 time:time,
-
 description:description
 
 })

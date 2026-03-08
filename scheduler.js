@@ -1,32 +1,29 @@
-require("dotenv").config()
+const cron=require("node-cron")
+const supabase=require("./supabase")
+const twilio=require("twilio")
 
-const cron = require("node-cron")
-const supabase = require("./supabase")
-const twilio = require("twilio")
+const client=twilio("AC2a8c0137a1beb3c1dae6d56ed2e0519e","2282b73f090920e428536d99b380199f")
 
-const client = twilio(
-process.env.TWILIO_ACCOUNT_SID,
-process.env.TWILIO_AUTH_TOKEN
-)
+cron.schedule("* * * * *",async()=>{
 
-cron.schedule("* * * * *", async ()=>{
-
-const {data} = await supabase
+const {data}=await supabase
 .from("calls")
 .select("*")
 
-const now = new Date()
-const currentTime =
-now.getHours()+":"+now.getMinutes()
+const now=new Date()
+
+const time=now.getHours()+":"+now.getMinutes()
 
 data.forEach(call=>{
 
-if(call.time === currentTime){
+if(call.time===time){
 
 client.calls.create({
-url:process.env.TWIML_URL,
+
+url:"https://handler.twilio.com/twiml/YOUR_TWIML",
 to:call.phone,
-from:process.env.TWILIO_NUMBER
+from:"+15706528097"
+
 })
 
 }

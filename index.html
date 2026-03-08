@@ -1,62 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Alarm Call System</title>
+
+<title>Dashboard</title>
+
+<link rel="stylesheet" href="style.css">
+<script src="app.js" defer></script>
+
 </head>
 
 <body>
 
-<h2>Login with Phone</h2>
+<div class="container">
 
-<input type="text" id="phone" placeholder="+91XXXXXXXXXX">
+<h2>Schedule Alarm Call</h2>
 
-<button onclick="sendOTP()">Send OTP</button>
+<input id="time" type="time">
 
-<br><br>
+<input id="description" placeholder="Description">
 
-<input type="text" id="otp" placeholder="Enter OTP">
+<button onclick="createCall()">Schedule Call</button>
 
-<button onclick="verifyOTP()">Verify</button>
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
-
-<script>
-
-const supabase = supabase.createClient(
-"https://YOUR_PROJECT.supabase.co",
-"YOUR_ANON_KEY"
-)
-
-async function sendOTP(){
-
-const phone = document.getElementById("phone").value
-
-await supabase.auth.signInWithOtp({
-phone: phone
-})
-
-alert("OTP Sent")
-
-}
-
-async function verifyOTP(){
-
-const phone = document.getElementById("phone").value
-const otp = document.getElementById("otp").value
-
-await supabase.auth.verifyOtp({
-phone: phone,
-token: otp,
-type: 'sms'
-})
-
-alert("Login Success")
-
-window.location="dashboard.html"
-
-}
-
-</script>
+</div>
 
 </body>
 </html>

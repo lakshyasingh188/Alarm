@@ -2,9 +2,10 @@
 <html>
 <head>
 
-<title>Dashboard</title>
-
+<title>Alarm Call System</title>
 <link rel="stylesheet" href="style.css">
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 <script src="app.js" defer></script>
 
 </head>
@@ -13,13 +14,17 @@
 
 <div class="container">
 
-<h2>Schedule Alarm Call</h2>
+<h2>Login with Phone</h2>
 
-<input id="time" type="time">
+<input id="phone" placeholder="+91XXXXXXXXXX">
 
-<input id="description" placeholder="Description">
+<button onclick="sendOTP()">Send OTP</button>
 
-<button onclick="createCall()">Schedule Call</button>
+<br><br>
+
+<input id="otp" placeholder="Enter OTP">
+
+<button onclick="verifyOTP()">Verify</button>
 
 </div>
 

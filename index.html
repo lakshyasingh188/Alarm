@@ -1,18 +1,55 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Login</title>
 
-<link rel="stylesheet" href="style.css">
+<title>Login System</title>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="app.js"></script>
+
+<style>
+
+body{
+font-family:Arial;
+background:#f2f2f2;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+}
+
+.box{
+background:white;
+padding:30px;
+border-radius:10px;
+box-shadow:0 0 10px rgba(0,0,0,0.1);
+text-align:center;
+width:300px;
+}
+
+input{
+width:90%;
+padding:10px;
+margin:10px;
+border:1px solid #ccc;
+border-radius:5px;
+}
+
+button{
+padding:10px 20px;
+background:#4CAF50;
+color:white;
+border:none;
+border-radius:5px;
+cursor:pointer;
+}
+
+</style>
 
 </head>
 
 <body>
 
-<div class="container">
+<div class="box">
 
 <h2>Login</h2>
 
@@ -20,13 +57,70 @@
 
 <input id="password" type="password" placeholder="Password">
 
+<br>
+
+<button onclick="signup()">Signup</button>
+
 <button onclick="login()">Login</button>
 
-<p>Don't have account?</p>
-
-<a href="signup.html">Create Account</a>
-
 </div>
+
+<script>
+
+const SUPABASE_URL="https://sozdibpjfbjypzndoeyz.supabase.co"
+
+const SUPABASE_KEY="PASTE_YOUR_ANON_KEY"
+
+const supabase = window.supabase.createClient(
+SUPABASE_URL,
+SUPABASE_KEY
+)
+
+async function signup(){
+
+const email=document.getElementById("email").value
+const password=document.getElementById("password").value
+
+const {data,error}=await supabase.auth.signUp({
+email:email,
+password:password
+})
+
+if(error){
+
+alert(error.message)
+
+}else{
+
+alert("Account Created")
+
+}
+
+}
+
+async function login(){
+
+const email=document.getElementById("email").value
+const password=document.getElementById("password").value
+
+const {data,error}=await supabase.auth.signInWithPassword({
+email:email,
+password:password
+})
+
+if(error){
+
+alert(error.message)
+
+}else{
+
+alert("Login Successful")
+
+}
+
+}
+
+</script>
 
 </body>
 </html>
